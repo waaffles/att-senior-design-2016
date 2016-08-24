@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+<!-- REACTs -->
+    <script src="js/references/react.js"></script>
+    <script src="js/references/react-dom.js"></script>
+
+<!-- JQUERY-->
+    <script src='js/references/jquery-2.1.4.min.js'> </script>
+
+ <script src="js/references/browser.min.js"></script>
+
+
+<!-- D3 -->
+
+      <script src='js/references/d3.v3.min.js'></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+      
+      <script src='js/references/linegraph.js'></script>
+      <script src='js/references/multilinegraph.js'></script>
+
+
+
+  <!--CSS-->
+    <link rel="stylesheet" href="css/materialize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/reportStyles.css">
+    <link rel="stylesheet" href="css/availability-graph.css">
+    <link rel="stylesheet" href="css/linegraph.css">
+
+    <title>AT&T</title>
+
+   
+</head>
+<body>
+
+   <!-- Navbar goes inside here. Called inside leftNav.js react class-->
+  <div class="leftSide" id="leftSide">
+  </div>
+
+  <!--Page content goes inside here. All graphs, alerts, info that isn't on the sidebar -->
+  <div class="rightSde">
+  <!-- BLUE HEADER GOES INSIDE HERE -->
+
+    <div class='content offleft1' id='content'>
+    
+
+
+    </div>
+
+    <div class='content offleft1' id='content2'>
+    
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+ <!--REACT SCRIPTS-->
+
+<script src='js/components/leftNav.js' type='text/babel'></script>
+<script src='js/components/ReportForm.js' type='text/babel'></script>
+
+
+
+
+
+	<form action='/logout' method='POST'>
+		<input type='submit'>Logout</button>
+	</form>
+
+</body>
+</html>

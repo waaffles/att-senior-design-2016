@@ -1,0 +1,557 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "VLAD:MIR API",
+        "description": "Routes to help read and manipulate RFCC Data"
+    },
+    "host": "localhost:3000",
+    "schemes": [
+        "http"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/admin/*": {
+            "get": {
+                "description": "Checks for admin authentication whenever a route starts with `/admin`\n",
+                "tags": [
+                    "Admin"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/admin/updateDataType": {
+            "post": {
+                "description": "Allows admin users to update threshold values for all data types\n",
+                "parameters": [
+                    {
+                        "name": "dataType",
+                        "in": "body",
+                        "description": "data type with updated values",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Data_Type"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/alerts/insert": {
+            "post": {
+                "description": "Inserts alerts into database and sends the alert to users email if they \ncan be alerted.\n",
+                "parameters": [
+                    {
+                        "name": "Insert",
+                        "in": "body",
+                        "description": "Alert that will be inserted",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Alerts"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Alerts"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/alerts/unresolved": {
+            "get": {
+                "description": "Retrieves all alerts that are still not resolved.\n",
+                "tags": [
+                    "Alerts"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list of alerts",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Alerts"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alerts/update": {
+            "post": {
+                "description": "Called when an alert continuous to show up on import, but values have \nchanged, therefore needing to update the current danger level and/or \nvalue of the alert. Also gets called when dismissing the alert.\n",
+                "parameters": [
+                    {
+                        "name": "update",
+                        "in": "body",
+                        "description": "Alert with updated values",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Alerts"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Alerts"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/signup": {
+            "post": {
+                "description": "This route will redirect user to home page if account creation is acccepted \nor redirect user bacck to signup page if account creation fails\n",
+                "tags": [
+                    "Authentication"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response redirect to `/home`"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "description": "will authenticate a user and redirect user to `/home/` if login is successful\n",
+                "tags": [
+                    "Authentication"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Response redirect user to `/home`"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "post": {
+                "description": "Will end current user session and redirect user back to login screen\n",
+                "tags": [
+                    "Authentication"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response redirect to login page"
+                    }
+                }
+            }
+        },
+        "/username": {
+            "get": {
+                "description": "Will return name of current user\n",
+                "tags": [
+                    "Authentication"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                }
+            }
+        },
+        "/home": {
+            "get": {
+                "description": "Direct a user to home page\n",
+                "tags": [
+                    "Index"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "send user to `views/index.html`"
+                    }
+                }
+            }
+        },
+        "/sites": {
+            "get": {
+                "description": "Will return a list of all the sites in database\n",
+                "tags": [
+                    "Sites"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of JSON site objects",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Sites"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sites/{siteName}/sats": {
+            "get": {
+                "description": "Will return all satellites associated with a specific site\n",
+                "tags": [
+                    "Sites"
+                ],
+                "parameters": [
+                    {
+                        "name": "siteName",
+                        "in": "path",
+                        "description": "name of site",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "list of satellite names",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Satellites"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sites/{siteName}/{satName}/trans": {
+            "get": {
+                "description": "Returns all transponders related to a given site and one of its satellites\n",
+                "tags": [
+                    "Sites"
+                ],
+                "parameters": [
+                    {
+                        "name": "siteName",
+                        "in": "path",
+                        "description": "name of site",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "satName",
+                        "in": "path",
+                        "description": "name of satellite",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Transponders"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sites/{siteName}/trans": {
+            "get": {
+                "description": "Returns a specified data type given a site, transponder, dataType, and date range\nor it will return data values with given site, transponder, dataType and\npreset date range.\n",
+                "tags": [
+                    "Sites"
+                ],
+                "parameters": [
+                    {
+                        "name": "siteName",
+                        "in": "path",
+                        "description": "name of Site",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "txpId",
+                        "in": "query",
+                        "description": "Id for a specific transponder and route can have multiple txpId.",
+                        "required": true,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "dataType",
+                        "in": "query",
+                        "description": "The data type of the values to be retrieved and returned",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "date1",
+                        "in": "query",
+                        "description": "The first date to be used for date range",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "date2",
+                        "in": "query",
+                        "description": "the second date to be used for date range",
+                        "type": "string",
+                        "format": "date"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of data value objects",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Data_Values"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/datatypes/get": {
+            "get": {
+                "description": "This route will return all the data types in database\n",
+                "tags": [
+                    "Sites"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of data type objects",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Data_Type"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/thresholds/{dataType}/": {
+            "get": {
+                "description": "Will return information of specified data_type\n",
+                "tags": [
+                    "Sites"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataType",
+                        "in": "path",
+                        "description": "Name of data Type",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array with a single data type object",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Data_Type"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/reports": {
+            "get": {
+                "description": "Will direct user to report page\n",
+                "tags": [
+                    "Sites"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response"
+                    }
+                }
+            }
+        },
+        "/grapher": {
+            "get": {
+                "description": "Will direct user to graphing page\n",
+                "tags": [
+                    "Sites"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Data_Type": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "name of data type."
+                },
+                "upperWarning": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "upper warning threshold value."
+                },
+                "upperDanger": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "upper danger threshold value."
+                },
+                "lowerWarning": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "lower warning threshold value."
+                },
+                "lowerDanger": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "lower danger threshold value."
+                }
+            }
+        },
+        "Alerts": {
+            "type": "object",
+            "properties": {
+                "created_on": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date when alert was created."
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "Comment on the alert."
+                },
+                "resolved": {
+                    "type": "boolean",
+                    "description": "determines if alert is resolved or not."
+                },
+                "resolved_by": {
+                    "type": "string",
+                    "description": "Name of person who resolved the alert."
+                },
+                "resolved_on": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date when alert was resolved."
+                }
+            }
+        },
+        "Username": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string",
+                    "description": "current users name"
+                }
+            }
+        },
+        "Sites": {
+            "type": "object",
+            "properties": {
+                "site": {
+                    "type": "string",
+                    "description": "name of site"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "name of city where site is located"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "abbreviation of state where site is located"
+                },
+                "longitude": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "longitude coordinate for the site"
+                },
+                "latitude": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "latitude coordinate for the site"
+                }
+            }
+        },
+        "Satellites": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "description": "name of satellite"
+                }
+            }
+        },
+        "Transponders": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "object",
+                    "properties": {
+                        "txp_num": {
+                            "type": "string",
+                            "description": "Transponder number"
+                        },
+                        "txp-id": {
+                            "type": "string",
+                            "description": "Transponder Id"
+                        }
+                    }
+                }
+            }
+        },
+        "Data_Values": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "object",
+                    "properties": {
+                        "trans_id": {
+                            "type": "string",
+                            "description": "Transponder Id"
+                        }
+                    }
+                },
+                "trans_data": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "data_type": {
+                                "type": "number",
+                                "format": "double",
+                                "description": "The key is the name of data_type and the value is data_type value number"
+                            },
+                            "date_time": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The date and time for the data value number"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

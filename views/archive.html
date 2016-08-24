@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+<!-- REACTs -->
+    <script src="js/references/react.js"></script>
+    <script src="js/references/react-dom.js"></script>
+    <script src="js/references/fixed-data-table.js"></script>
+
+<!-- JQUERY-->
+    <script src='js/references/jquery-2.1.4.min.js'> </script>
+    <script src="js/references/browser.min.js"></script>
+
+  <!--CSS-->
+    <link rel="stylesheet" href="css/materialize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/fixed-data-table.css">
+
+    <title>AT&T</title>
+
+   
+</head>
+<body>
+
+   <!-- Navbar goes inside here. Called inside leftNav.js react class-->
+  <div class="leftSide" id="leftSide">
+  </div>
+
+  <!--Page content goes inside here. All graphs, alerts, info that isn't on the sidebar -->
+  <div class="rightSde">
+
+    <div class='content offleft1' id='content'></div>
+
+
+  </div>
+
+ <div id='archive-table-div'></div> 
+
+ <!--REACT SCRIPTS-->
+
+<script src='js/components/leftNav.js' type='text/babel'></script>
+<script src='js/components/archive.js' type='text/babel'></script>
+
+
+</body>
+</html>

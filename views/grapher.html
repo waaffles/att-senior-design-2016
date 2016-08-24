@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+<!-- REACTs -->
+    <script src="js/references/react.js"></script>
+    <script src="js/references/react-dom.js"></script>
+
+<!-- JQUERY-->
+    <script src='js/references/jquery-2.1.4.min.js'> </script>
+
+ <script src="js/references/browser.min.js"></script>
+
+
+<!-- D3 -->
+
+      <script src='js/references/d3.v3.min.js'></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+
+      <script src='js/references/linegraph.js'></script>
+      <script src='js/references/multilinegraph.js'></script>
+
+
+
+  <!--CSS-->
+     <link rel="stylesheet" href="css/materialize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/availability-graph.css">
+    <link rel="stylesheet" href="css/linegraph.css">
+
+    <title>AT&T</title>
+
+
+</head>
+<body>
+
+   <!-- Navbar goes inside here. Called inside leftNav.js react class-->
+  <div class="leftSide" id="leftSide">
+  </div>
+
+  <!--Page content goes inside here. All graphs, alerts, info that isn't on the sidebar -->
+
+  <div class="rightSide">
+
+
+
+
+
+
+    <div class='content offleft1' id='content'>
+
+
+
+                <!-- Loading screen goes inside here -->
+                <div class="loadingScreen"></div>
+
+
+
+
+                <!-- Wrapper div for react MAP graph compenent to fall into -->
+                <div id='graphWrapper'> <div id='graph-area' class='graphMap'></div></div>
+
+                <!-- Wrapper div for react PLOTTING graph compenent to fall into -->
+                <!-- <div id="chart1" class="chart">hello</div> -->
+
+
+
+
+
+
+
+
+    </div>
+
+
+  </div>
+
+  <!-- no data notification goes here -->
+  <div class="no-data-wrapper" style='position:absolute; top:40vh; left:42vw;'></div>
+
+
+   <div class="preloader-wrapper big active full-right-screen-loader">
+
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+ <!--REACT SCRIPTS-->
+
+<script src='js/components/leftGraphNav.js' type='text/babel'></script>
+
+<script src='js/components/availabilityGraph.js' type='text/babel'></script>
+
+<script src='js/components/signalGraph.js' type='text/babel'></script>
+
+
+<!-- REMOVERS-->
+<script>
+function removeEsnoGraph(){
+    console.log("will remove old graph");
+    $('svg.theChart').remove();
+}
+function addLoading(){
+    removeNoData();
+  console.log("will add loading screen");
+  $(".rightSide").css( "-webkit-filter", "blur(4px)" );
+  $('.preloader-wrapper').show();
+}
+
+function removeLoading(){
+  console.log("will remove loading screen");
+     $('.preloader-wrapper').hide();
+      $(".rightSide").css( "-webkit-filter", "blur(0px)" );
+
+}
+
+function displayNoData(){
+  console.log('displaying no data');
+
+  //$('.no-data-wrapper').append('<div class="valign-wrapper" id="no-data" ><h5 class="valign center-align">No data found for your query</h5></div>');
+    $('.no-data-wrapper').append('<div  id="no-data" ><h5>No data found for your query</h5></div>');
+
+}
+
+function removeNoData(){
+  console.log('removing no data');
+  $('#no-data').remove();
+}
+
+
+removeLoading();
+</script>
+
+
+</body>
+</html>

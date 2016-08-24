@@ -1,0 +1,48 @@
+{
+  "name": "vlad-mir",
+  "version": "0.0.1",
+  "description": "AT&T Senior Design Project. Signal to Ratio Monitoring and Data Acquisition.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/easauceda/vlad-mir.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/easauceda/vlad-mir/issues"
+  },
+  "homepage": "https://github.com/easauceda/vlad-mir#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.0.6",
+    "body-parser": "^1.14.2",
+    "bootstrap": "^3.3.5",
+    "d3": "3.5.x",
+    "express": "4.13.x",
+    "express-session": "^1.13.0",
+    "fast-csv": "^1.0.0",
+    "griddle-react": "^0.5.1",
+    "jade": "~1.11.0",
+    "minimist": "~1.2.0",
+    "mocha": "^2.3.4",
+    "moment": "^2.11.2",
+    "mongodb": "2.0.x",
+    "mongoose": "^4.3.7",
+    "morgan": "~1.6.1",
+    "nodemailer": "1.10.x",
+    "nodemailer-smtp-transport": "^1.0.4",
+    "passport": "0.3.2",
+    "passport-local": "^1.0.0",
+    "react-skylight": "^0.4.0",
+    "should": "^8.0.2",
+    "superagent": "^1.6.1",
+    "swagger-node-express": "~2.1.3",
+    "swagger-ui": "~2.1.4",
+    "yargs": "^3.31.0"
+  }
+}

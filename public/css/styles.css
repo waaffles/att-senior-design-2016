@@ -1,0 +1,292 @@
+/*-------------------------MAIN/BASIC STYLES------------------------------------*/
+html, body{
+	margin:0px;
+
+}
+
+.top{
+	background-color: rgb(79, 195, 247);
+	height:90px;
+
+}
+
+.bg{
+	background-color: rgb(252,252,252);
+}
+
+.whiteTxt{
+	color: rgb(252,252,252);
+}
+
+.blackTxt{
+	color: rgb(68, 68, 68);
+}
+
+.highlight{
+	background-color: rgb(243, 243, 243);
+}
+
+/*.right{
+	width:85%;
+}*/
+
+.left{
+	float:none;	
+}
+
+.bold{
+	font-weight: bold;
+}
+
+.offleft{
+	margin-left: 250px;
+	/*margin-top:0px;*/
+	padding-top:5px;
+}
+
+.offleft1{
+	margin-left:240px;
+}
+
+.margin0{
+	margin:0px;
+}
+
+.content{
+}
+
+.rightSide{
+	height:100vh;
+}
+
+  /*
+    When creating your CSS selector,
+    change "brown" to something of your choosing
+   */
+    .waves-effect.waves-att .waves-ripple {
+     /* The alpha value allows the text and background color
+     of the button to still show through. */
+      background-color: rgba(79, 195, 247, 0.65);
+      height:inherit;
+    }
+
+
+/*-----------------------------------------NAV STYLES------------------------------------*/
+
+.side-nav{
+	padding-bottom: 0px;
+	height:100vh;
+}
+
+.side-nav{
+	padding-bottom: 0px;
+	height:100vh;
+}
+
+.side-nav a{
+	height:inherit;
+}
+
+
+.fright{
+	float:right;
+}
+
+.collapsible-body p{
+	height:inherit;
+	padding:0;
+}
+
+input[type=text], input[type=date]{
+	height:49px;
+	margin:0;
+	width:145px;
+
+}
+
+.waves-input-wrapper .waves-button-input{
+	vertical-align: top;
+}
+
+.waves-effect{
+	vertical-align:top;
+	width:100%;
+}
+
+::-webkit-input-placeholder {
+   color: black;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: black;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: black;  
+}
+
+:-ms-input-placeholder {  
+   color: black;  
+}
+
+
+.scrollable{
+	overflow-y: auto;
+	cursor: default;
+	pointer-events: auto;
+
+}
+
+.blue-button{
+	background-color: rgb(79, 195, 247);
+
+}
+
+.text-button{
+	font-size:25px;
+	font-style: bold;
+}
+
+.horizontal .sm{
+	float:left;
+	width: 38px;
+	font-size:14px;
+}
+
+.horizontal .year{
+	width: 45px;
+}
+
+
+.hide-scrollbar::-webkit-scrollbar { 
+    display:none;
+    overflow-y:hidden;
+}
+
+/*------------------------------------TABLE STYLES------------------------------------*/
+
+#tableDiv{
+	display:none;
+}
+
+tr{
+	height:45px;
+}
+
+td{
+	padding: 5px 10px 5px 10px;
+}
+
+/*------------------------------ALERT STYLES------------------------------------*/
+.alertMenu{
+	position:absolute;
+	height:550px;
+	width:250px;
+	top:90px;
+	right:0px;
+	overflow-y:scroll;
+
+}
+
+.card{
+	height:130px;
+	line-height:15px;
+
+}
+
+.card .card-content .card-title{
+line-height:20px;
+}
+.card .card-content{
+	padding:10px 10px 5px 10px;
+	line-height:18px;
+}
+
+/*------------------------------MAP STYLES------------------------------------*/
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  position:absolute;
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 50px;
+  opacity: 0;
+}
+
+/*ul{
+	overflow-y:scroll;
+}*/
+
+
+/*------------------------------ALERT TABLE STYLES------------------------------------*/
+.resolve-comment {
+	width: 300px;
+}
+
+.resolve-button {
+	display:inline;
+	word-wrap: break-word;
+	background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.align-table-left {
+	position: absolute;
+    left: 0px;
+    width: 300px;
+    background-color: #b0e0e6;
+
+}
+
+.align-table-right {
+	position: absolute;
+    right: 0px;
+    width: 300px;
+    background-color: #b0e0e6;
+}
+
+#archive-table-div {
+	margin-left: 240px;
+}
+
+/*---------------------------------LOADING MODULE STYLES-----------------------------------*/
+
+
+.preloader-wrapper{
+	margin-left:240px;
+	position: fixed;
+	top:45vh;
+	left: 40vw;
+	z-index:101;
+}
